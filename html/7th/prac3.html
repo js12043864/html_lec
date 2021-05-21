@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $.get('https://jsonplaceholder.typicode.com/todos', function (data, status) {
+                for (var i = 0; i < data.length; i++) {
+                    $('#box').append('<h1>' + data[i].title + '</h1> <hr>')
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+
+</html>

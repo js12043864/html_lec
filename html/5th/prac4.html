@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .div1 {
+            display: flex;
+        }
+
+        .div2 {
+            background-color: grey;
+            border: 1px solid;
+            width: 100px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('.div2').click(function () {
+                $('.div2').css("background-color", "grey");
+                $(this).css("background-color", "white")
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="div1">
+        <!-- # 의미없는 링크 -->
+        <a href="#" class="div2">html</a>
+        <a href="#" class="div2">css</a>
+        <a href="#" class="div2">javascript</a>
+    </div>
+
+
+</body>
+
+</html>

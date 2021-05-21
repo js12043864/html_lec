@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // window.addEventListener("keydown", function (event) {
+        //     console.log(event);
+        // });
+
+
+        function getRandomint(min, max) {
+            min = Math.ceil(min); //올림
+            max = Math.floor(max);  //내림
+            let result = Math.floor(Math.random() * (max - min)) + min
+            console.log(result);
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <button onclick="getRandomint(0,10)">랜덤</button>
+    </div>
+</body>
+
+</html>

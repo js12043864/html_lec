@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Mario</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+
+    #ground {
+      width: 98%;
+      height: 500px;
+      border: 1px solid black;
+      position: absolute;
+    }
+
+    #background {
+      z-index: -10;
+      width: 200%;
+      height: 100%;
+      background: url('bg.jpeg');
+      background-size: 50% 100%;
+      position: absolute;
+      animation: sliding 20s infinite;
+      animation-timing-function: linear;
+    }
+
+    #mario {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      bottom: 50px;
+    }
+
+    #gumba {
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+    }
+
+    #score {
+      z-index: 10;
+      font-size: 50px;
+    }
+
+    @keyframes sliding {
+      from {
+        left: 0%
+      }
+
+      to {
+        left: -100%
+      }
+    }
+  </style>
+
+  <script>
+    let isJumping = false;
+    let isAlive = true;
+    let score = 0;
+
+    function jump() {
+      if (isJumping) {
+        return;
+      }
+
+      isJumping = true;
+      $('#mario').animate({
+        bottom: '+=150px'
+      }, 500).animate({
+        bottom: '-=150px'
+      }, 2000, function () {
+        isJumping = false;
+      });
+    }
+
+    function enemyMove(speed) {
+      $('#gumba').animate({
+        right: '120%'
+      }, speed, function () {
+        $('#gumba').css('right', '-50px');
+
+        if (isAlive) {
+          score += 100;
+          setScore(score);
+        }
+      });
+    }
+
+    function isCrash(char1, char2) {
+      let result = false;
+
+      let marioRight = char1.position().left
+        + parseInt(char1.css('width'));
+      let marioBottom = parseInt(char1.css('bottom'));
+      let marioLeft = char1.position().left;
+
+      let gumbaLeft = parseInt(char2.css('left'));
+      let gumbaTop = parseInt(char2.css('bottom'))
+        + parseInt(char2.css('height'));
+
+      if ((marioLeft < gumbaLeft && gumbaLeft < marioRight)
+        && marioBottom < gumbaTop
+      ) {
+        result = true;
+      }
+
+      return result;
+    }
+
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+    }
+
+    function setScore(score) {
+      $('#score').text('점수 : ' + score);
+    }
+
+    window.addEventListener('keydown', function (event) {
+      if (event.code == 'Space') {
+        jump();
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div id="ground">
+    <div id="background"></div>
+    <img id="mario" src="man.gif">
+    <img id="gumba" src="gb.gif" alt="">
+    <div id="score"></div>
+  </div>
+
+  <script>
+    let mario = $('#mario');
+    let gumba = $('#gumba');
+
+    setScore(0);
+
+    setInterval(function () {
+      let speed = getRandomInt(4000, 10000);
+      enemyMove(speed);
+
+      if (isAlive) {
+        if (isCrash(mario, gumba)) {
+          isAlive = false;
+          // alert('마리오가 죽었습니다');
+          console.log('die');
+        }
+      }
+
+    }, 100);
+  </script>
+</body>
+
+</html>

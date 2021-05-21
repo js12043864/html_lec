@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('#join').click(function () {
+                var name = document.getElementById('userid').value;
+                var password = document.getElementById('password').value;
+                var gender = document.querySelectorAll('input[type="radio"]:checked');
+                var hobby = document.querySelectorAll('input[type="checkbox"]:checked');
+                if (name.includes("@") == false) {
+                    alert("아이디 형식이 잘못됐습니다");
+                } else if (password.length < 5) {
+                    alert("비밀번호 형식이 잘못됐습니다");
+                } else if (gender.length == 0) {
+                    alert("성별 선택이 잘못됐습니다");
+                } else if ($('#job option:selected').val() == "none") {
+                    alert("직업 선택이 잘못됐습니다");
+                } else if (hobby.length < 3) {
+                    alert("취미 선택이 잘못됐습니다");
+                } else {
+                    alert("회원가입이 완료되었습니다");
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form>
+        <div>
+            <span>아이디</span>
+            <input type="text" id="userid">
+        </div>
+        <div>
+            <span>비밀번호</span>
+            <input type="password" id="password">
+        </div>
+        <div>
+            <span>성별</span>
+            <input type="radio" name="typegender" class="gender">남자
+            <input type="radio" name="typegender" class="gender">여자
+        </div>
+        <div>
+            <span>직업</span>
+            <select name="" id="job">
+                <option value="none"></option>
+                <option value="">유튜버</option>
+                <option value="">bj</option>
+                <option value="">대통령</option>
+            </select>
+        </div>
+        <div>
+            <span>취미</span>
+            <input type="checkbox" name="" id="">개발
+            <input type="checkbox" name="" id="">게임
+            <input type="checkbox" name="" id="">낚시
+            <br>
+            <input type="checkbox" name="" id="">운동
+            <input type="checkbox" name="" id="">독서
+            <input type="checkbox" name="" id="">음악감상
+        </div>
+        <div>
+            <!-- reset 타입으로 초기화시킴 -->
+            <input type="reset" id="cancel" value="취소">
+            <input type="button" id="join" value="회원가입">
+        </div>
+    </form>
+</body>
+
+</html>

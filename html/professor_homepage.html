@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .menu {
+      background-color: yellow;
+      height: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .star {
+      margin-right: auto;
+    }
+
+    .menu-item:not(:first-child) {
+      margin-left: 40px;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .text {
+      font-size: 2em;
+    }
+
+    .button {
+      margin-top: 50px;
+      border: 1px solid black;
+      padding: 10px 20px;
+      background-color: white;
+    }
+
+    body {
+      background-image: url("iu.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <div class="star menu-item"><a href="#">별</a></div>
+    <div class="menu-item"><a href="#">Home</a></div>
+    <div class="menu-item"><a href="#">About</a></div>
+    <div class="menu-item"><a href="#">Projects</a></div>
+    <div class="menu-item"><a href="#">Contact</a></div>
+  </div>
+  <div class="container">
+    <div class="text">
+      안녕하세요, 제 이름은 <span style="color:red">오준석입니다.</span><br>
+      저는 모바일 앱 개발자입니다.
+    </div>
+    <div>
+      <input class="button" type="button" value="View my work">
+    </div>
+  </div>
+</body>
+
+</html>

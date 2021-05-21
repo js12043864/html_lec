@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #display {
+            background-color: aqua;
+            /* inline으로 주면 span처럼 자기 자신의 내용만큼의 크기만을 가진다 */
+            display: inline;
+        }
+        span { 
+            background-color: blue;
+            /* block은 한 라인 다 차지
+            block이 기본인듯*/
+            display: block;
+        }
+        #none {
+            background-color: red;
+            /* none -> 아무것도 안나온다 */
+            display: none;
+        }
+        h1 {
+            background-color: yellow;
+            /* visibility -> 기본은 visible 
+            hidden으로 설정시 공간은 받지만 내용 안보인다 */
+            visibility: hidden;
+        }
+        
+        #margin-test {
+            /* margin 바깥여백 */
+            margin: 50px;
+            background-color: blueviolet;
+            /* 인라인일 때는 margin이 위아래는 적용이 안됨 */
+            display: inline;
+        }
+
+        #padding-test {
+            /* padding 안쪽여백 */
+            padding: 50px;
+            background-color: brown;            
+            display: inline;
+        }
+        /* 조건 부여 */
+        @media screen and (min-width:0px) and (max-width:500px) {
+            li {
+                display: block;
+            }
+        }
+        @media screen and (min-width:501px){
+            li {
+                display: inline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>hello</h1>
+    <p id="none">hello</p>
+    <div id="display">hello</div>
+    <span>hello</span>
+    <div id="margin-test">
+        <p id="padding-test">hello world</p>
+    </div>
+    <br><br><br><br><br><br>
+    <div>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS</li>
+            <li>JSP</li>
+            <li>JAVASCRIPT</li>
+            <li>JQUERY</li>
+
+        </ul>
+    </div>
+</body>
+</html>

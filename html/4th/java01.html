@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script src="js.js"></script>
+    <style>
+        .onmouseover {
+            width: 200px;
+            height: 200px;
+            background-color: thistle;
+        }
+    </style>
+</head>
+
+<body onload="alert('로드됨')">
+    <script>
+        // var 변수선언 동시에 값 초기화
+        // let 지역변수 선언 동시에 값 초기화
+        //  const 지역상수 선언(final 붙인거랑 같다고 생각)
+        // 자바와 다르게 type을 var로 선언하면 되는데 typeof 로 확인하면04
+        // number , string 등 이렇게 나온다.
+        var i = 0;
+        console.log(i);
+
+        i = 1.5;
+        console.log(typeof i);
+
+        i = 'c';
+        console.log(typeof i);
+
+        let j = 0;
+        j = 1;
+        console.log(j);
+
+        const k = 0;
+        console.log(k);
+
+        // confirm의 결과 저장
+        function myConfirm() {
+            // 원래는 window.confirm인데 window 없애도됨
+            var result = confirm('ok??');
+            console.log(result);
+            // 확인을 눌렀다면
+            if (result = true) {
+                //url 연다
+                window.open("stylesheet4.html", "새창");
+            }
+        }
+
+        function promptTest1() {
+            // prompt 는 입력창 나오게한다
+            let text = prompt("당신의 이름은 무엇인가요?");
+            while (true) {
+                if (text != "" && text != null) {
+                    alert("안녕요 " + text + "님♥");
+                    break;
+                }
+                else {
+                    text = prompt("입력해주세요");
+                }
+            }
+        }
+        function promptTest2() {
+
+            let text = prompt("숫자적어주세요");
+            // === or !== 
+            while (true) {
+                // isNaN  숫자이면 false
+                if (isNaN(text) == false && (text >= 1 && text <= 100)) {
+                    for (var i = 1; i < 101; i++) {
+                        console.log(i);
+                    }
+                    alert("완료되었습니다.");
+                    break;
+                }
+                else if (isNaN(text) == false && (text < 1 || text > 100)) {
+                    alert("1이상 100이하를 넣어주세요");
+                    text = prompt("숫자적어주세요");
+                } else {
+                    alert("숫자를 입력해 주세요");
+                    text = prompt("숫자적어주세요");
+                }
+            }
+        }
+
+        function getName() {
+            let name = document.getElementById('name');
+            // name에 입력되는 값 출력 (name.value)
+            console.log(name.value);
+        }
+
+        function putHtml() {
+            let html = document.getElementById('html');
+            let textdiv = document.getElementById('text');
+            // html의 값을 textdiv에 넣겠다.
+            textdiv.innerHTML = html.value;
+
+            html.value = '';
+        }
+    </script>
+    <center>
+        <input type="button" value="클릭!!!" onclick="alert(myFunc2('박',26))">
+        <input type="button" value="confirm" onclick="myConfirm()">
+        <input type="button" value="실습1" onclick="promptTest1()">
+        <input type="button" value="실습2" onclick="promptTest2()">
+
+        <div id="text"></div>
+
+        <input type="text" id="name" placeholder="이름">
+        <input type="button" value="id값 가져오기" onclick="getName()">
+        <br>
+        <input type="text" id="html" placeholder="html">
+        <input type="button" value="html 코드 입력" onclick="putHtml()">
+
+        <br><br>
+        <!-- this는 select를 가르키는데 해당하는 option의 value값 -->
+        <select name="" id="" onchange="alert(this.value)">
+            <!-- value가 값이고 option 사이에 있는 것은 보여주기 위한 것 -->
+            <option value="red">빨강</option>
+            <option value="green">초록</option>
+            <option value="blue">파랑</option>
+        </select>
+
+        <!-- 마우스 들어오고 나갔을 때에 경고창 -->
+        <!-- <div class="onmouseover" onmouseover="alert('마우스 들어옴')" onmouseout="alert('마우스 나감')" onmousemove="console.log('마우스 움직임')">onmouseover 영역</div> -->
+    </center>
+</body>
+
+</html>

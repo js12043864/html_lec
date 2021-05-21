@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #text {
+            color: changecol(clr);
+        }
+    </style>
+    <script>
+        function putHtml() {
+            html = document.getElementById('html');
+            if (html.value == '') {
+                alert('텍스트값을 입력해 주세요');
+            } else {
+                printtext(html.value);
+            }
+        }
+        function printtext(txt) {
+            document.write('<div id = "text">' + txt + '<div>' + '<input type="button" value="red" onclick= "changecol(\'red\')">' + '<input type="button" value="blue" onclick= "changecol(\'blue\')">' + '<input type="button" value="green" onclick= "changecol(\'green\')">' + '</div>');
+        }
+
+
+        function changecol(clr) {
+            if (clr == 'red') {
+                colorCode = '#ee4938';
+            } else if (clr == 'blue') {
+                colorCode = '#0228ff';
+            } else if (clr == 'green') {
+                colorCode = '#188349';
+            }
+            alert(clr + '색으로 변경됩니다.');
+            document.getElementById('text').style.color = colorCode;
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="text" id="html" placeholder="html">
+    <input type="button" value="html 코드 입력" onclick="putHtml()">
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .clicked {
+            background-color: gray;
+        }
+
+        .div1 {
+            display: flex;
+
+
+        }
+
+        .div2 {
+            border: 1px solid;
+            width: 100px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="div1">
+        <!-- # 의미없는 링크 -->
+        <a href="#" class="div2">html</a>
+        <a href="#" class="div2">css</a>
+        <a href="#" class="div2">javascript</a>
+    </div>
+
+    <script>
+        var result = document.querySelectorAll('.div2');
+
+        function handleClick() {
+            // 함수 실행하면 class들 다 없앤다
+            for (var i = 0; i < result.length; i++) {
+                result[i].classList.remove('clicked');
+            }
+            // 그리고 누른 메뉴에만 클래스 추가
+            this.classList.add('clicked');
+        }
+
+        // click 실행하면 함수를 추가
+        for (var i = 0; i < result.length; i++) {
+            result[i].addEventListener('click', handleClick)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            /* 스크롤 없애기 위해 hidden */
+            overflow: hidden;
+        }
+
+        #image {
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+        }
+
+        #image2 {
+            size: 10px 10px;
+            width: 2%;
+            height: 2%;
+            color: white;
+        }
+
+        #let {
+            position: absolute;
+            left: 43.5%;
+            top: 50%;
+            color: white;
+            font: bold;
+
+        }
+
+        #sp1 {
+            position: fixed;
+            left: 60%;
+            padding: 0.7%;
+            font-size: 70%;
+        }
+
+        #sp2 {
+            position: fixed;
+            left: 70%;
+            font-size: 70%;
+            padding: 0.7%;
+        }
+
+        #sp3 {
+            position: fixed;
+            left: 80%;
+            font-size: 70%;
+            padding: 0.7%;
+        }
+
+        #sp4 {
+            position: fixed;
+            padding: 0.7%;
+            left: 90%;
+            font-size: 70%;
+        }
+
+        #let2 {
+            position: absolute;
+            left: 44%;
+            top: 52%;
+            color: white;
+        }
+
+        #back {
+            background-color: rgb(12, 11, 11);
+        }
+
+        #link {
+            text-decoration: none;
+            color: white;
+        }
+
+        #view {
+            position: absolute;
+            left: 47%;
+            top: 60%;
+            border: 1px solid;
+            color: white;
+            background-color: transparent;
+
+        }
+    </style>
+</head>
+
+<body>
+    <img src="space.jpg" alt="배경" id="image">
+    <div id="back">
+        <img src="star2.png" alt="배경" id="image2">
+        <span id="sp1"><a href="https://naver.com" id="link">Home</a></span>
+        <span id="sp2"><a href="https://naver.com" id="link">About</a></span>
+        <span id="sp3"><a href="https://naver.com" id="link">Projects</a></span>
+        <span id="sp4"><a href="https://naver.com" id="link">Contact</a></span>
+    </div>
+    <div id="let">안녕하세요, 제 이름은 <span style="color: red;">박준성입니다.</span>
+    </div>
+    <div id="let2">저는 프론트엔드 개발자입니다.</div>
+    <br>
+    <input type="button" id="view" value="View my work→" onclick="alert()">
+</body>
+
+</html>

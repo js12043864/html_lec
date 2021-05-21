@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>실습7</title>
+    </head>
+    <body>
+        <h1>1 정보입력</h1>
+        
+            <form>
+                <!-- placeholder는 빈칸에 적어야할 내용 보이게함 -->
+                
+                <input type="text" placeholder="이름" size=54 maxlength=10><br><br>
+                <input type="text" placeholder="아이디" size=54 maxlength=20><br><br>
+                <input type="password" placeholder="비밀번호" size=54 maxlength=20>
+                <abbr title="영어 대소문자 구분 없이 10자 이하"><font size=2><u>비밀번호 도움말</u></font></abbr>
+                <br><br>
+                <input type="password" placeholder="비밀번호 재입력" size=54 maxlength=20><br><br>
+
+                <select style="width: 125px;">
+                    <option>휴대폰 번호 선택</option>
+                    <option>010</option>
+                    <option>011</option>
+                    <option>012</option>
+                </select>
+                - <input type="text" style="width: 125px;"> - <input type="text" style="width: 125px;"><br><br>
+                <input type="text" placeholder="이메일" style="width: 125px;">
+                <select style="width: 125px;" >
+                    <option>선택</option>
+                    <option>naver.com</option>
+                    <option>daum.net</option>
+                    <option>gmail.com</option>
+                </select>
+                <br><br><br>
+                <select style="width: 100px;">
+                    <option>전화번호</option>
+                    <option>02</option>
+                    <option>031</option>
+                    <option>052</option>
+                </select>
+                - <input type="text" style="width: 100px;"> - <input type="text" style="width: 100px;"><br><br>
+                <select style="width: 100px;">
+                    <option>휴대폰 번호</option>
+                    <option>010</option>
+                    <option>011</option>
+                    <option>012</option>
+                </select>
+                - <input type="text" style="width: 100px;"> - <input type="text" style="width: 100px;"> <input type="button" onclick="" value="휴대폰 인증"><br>
+                <input type="radio" id="a"> <label for="a">인증받은 휴대폰 번호를 대표번호로 사용</label>
+                <input type="radio" id="a"> <label for="a">다른번호 등록</label>
+                <input type="radio" id="a"> <label for="a">다음에 등록함</label>
+                <br><br>
+                <input type="text" placeholder="우편번호" style="width: 200px;"> <input type="button" onclick="" value="주소 찾기"><br><br><br><br>
+                <input type="button"  style="height: 40px; background-color: greenyellow;" onclick="alert('가입 완료!!')" value="가입신청" > 
+                <input type="button" style="height: 40px;" onclick="alert('가입 취소')" value="취소"><br><br>
+            
+            </form>
+            
+        
+    </body>
+</html>

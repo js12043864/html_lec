@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 제이쿼리 사용 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // $() -> onload
+        $(function () {
+            $('#addbutton').click(function () {
+                let text = $('#textfield').val();
+                $('ul').append('<li>' + text + '</li>');
+
+                // 비워두자
+                $('#textfield').val('');
+            });
+
+            $('#htmlbutton').click(function () {
+                $('#box').html('<h1>helloworld</h1>');
+            });
+
+            $('#textbutton').click(function () {
+                // .text는 h1도 글자로 나온다
+                $('#box').text('<h1>helloworld</h1>');
+            });
+
+            $('.hidebutton').on('click', function () {
+                // $('#hello').hide();
+                // $(this).hide(); ->버튼이 없어짐
+                hide();
+            }).on('mouseover', function () {
+                alert('mouseover');
+            }).mouseout(function () {
+                console.log('mouseout');
+            });
+        })
+
+
+        let title = document.getElementsByClassName('title');
+        function log() {
+            $('input:checkbox[name=check]').each(function (index) {
+                if (this.checked) {
+                    console.log(title[index].textContent);
+                }
+            });
+        }
+
+        function show() {
+            $('#hello').show();
+        }
+
+        function hide() {
+            $('#hello').hide();
+        }
+
+
+
+        // function test() {
+        //     $("input:checkbox[name=check]").each(function (index, element) {
+        //         $(this).prop("checked", true);
+        //         this.checked = true;
+        //         if ($(this).is(':checked') {
+
+        //         }
+        //     })
+        // }
+        function testcheck() {
+            $()
+        }
+    </script>
+
+    <style>
+        table {
+            /* 떨어져있는 공백 지워줌 */
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <span id="hello">hello world</span>
+    <input type="button" value="show" onclick="show()">
+    <input type="button" class="hidebutton" value="hide">
+
+    <div>
+        <input type="button" id="htmlbutton" value="html">
+        <input type="button" id="textbutton" value="text">
+    </div>
+    <div id="box">
+
+    </div>
+    <div>
+        <input type="text" id="textfield" value="">
+        <input type="button" id="addbutton" value="추가">
+        <!-- ul>li*3 하면 ul 안에 li 3개 들어감 -->
+        <ul>
+            <li>aaaaa</li>
+            <li>bbbbb</li>
+            <li>ccccc</li>
+        </ul>
+    </div>
+    <form>
+        <table>
+            <tr>
+                <td><input type="checkbox" name="checkall" onclick="" id="">확인</td>
+                <td>제목</td>
+                <td>글 쓴 시간</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="check" id=""></td>
+                <td class="title">111111</td>
+                <td>222222</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="check" id=""></td>
+                <td class="title">fdfd</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="check" id=""></td>
+                <td class="title">ㄹㅇㄹㅇ</td>
+                <td>ㄹㅇㄹㅇㄹ</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="check" id=""></td>
+                <td class="title">ㅇㄹㅇㄹㅇ</td>
+                <td>ㅁㄷ</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="check" id=""></td>
+                <td class="title">ㄷㅇ</td>
+                <td>ㅁㅍㅇ</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="check" id=""></td>
+                <td class="title">ㄷㅍㅇ</td>
+                <td>ㄷㄷㄷㄷ</td>
+            </tr>
+        </table>
+        <input type="button" value="로그" onclick="log()">
+    </form>
+</body>
+
+</html>

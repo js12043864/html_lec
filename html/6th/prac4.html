@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        #box {
+            border: 1px solid black;
+            width: 100%;
+            height: 500px;
+            position: absolute;
+        }
+
+        #image {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 100px;
+            bottom: 100px;
+        }
+
+        #image2 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            right: 100px;
+            bottom: 100px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        function move() {
+            $('#image2').animate({
+                right: '100%'
+            })
+        }
+
+        $(function () {
+
+            setInterval(function () {
+                $('#image2').animate({
+                    left: '-=150px'
+                }, 500);
+            })
+
+            function iam()
+            $('body').keydown(function (event) {
+                // 스페이스
+                if (event.keyCode == 32) {
+                    $('#image').animate({
+                        top: '-=160px'
+                    }, 500);
+                    $('#image').animate({
+                        top: '+=160px'
+                    }, 500);
+                }
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <img src="character.gif" id="image" alt="">
+        <img src="character.gif" id="image2" alt="">
+    </div>
+</body>
+
+</html>

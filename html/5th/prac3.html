@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        #title {
+            border: 1px solid black;
+            background-color: grey;
+            width: 200px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: small;
+        }
+
+        #back {
+            width: 200px;
+            border: 1px solid blanchedalmond;
+            background-color: blanchedalmond;
+        }
+
+        #content {
+            background-color: white;
+            border: 1px solid white;
+            padding: 1px 2px 1px 2px;
+            width: 150px;
+            margin: 10px 0px 10px 20px;
+            font-size: small;
+        }
+
+        #register {
+            background: grey;
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('#register').click(function () {
+                var name;
+                var content;
+                name = prompt("이름 입력");
+                content = prompt("기사 내용 입력");
+                $('#back').append('<div id="content"><b>' + name + '</b> ' + content + '</div>');
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="title">기사등록하기</div>
+    <div id="back">
+        <br>
+        <div id="content"><b>박지성</b> SBS에서 월드컵보세요!</div>
+        <div id="content"><b>안정환</b> MBC죠...</div>
+        <div id="content"><b>이영표</b> KBS는 수신료의 가치를..</div>
+    </div>
+    <br>
+    <input type="button" id="register" value="등록하기">
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>stylesheet</title>
+    <!-- 한글 폰트 구글에서 찾아서 링크한 것 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <!-- 내부 선언 방식 -->
+    <style>
+        div {
+            border: 1px;
+            border-style: solid;
+            color: yellow;
+        }
+        /* 3번째 div 적용하는 것 속성 바꾸기 (1부터 시작) 
+        좋은 방법은 아니다. 구조가 바뀌면 답이 없다....*/
+        div:nth-child(3) {
+            border: 5px;
+            border-style: solid;
+            width: 50%;
+        }
+        /* 클래스 지정
+            div 보다 클래스가 더 높네*/
+        .my_text {
+            color: pink;
+        }
+        .my_page {
+            background-color: blue;
+        }
+        .is_logged_out {
+            border:6px;
+            border-style: solid;
+        }
+        /* id를 지정 */
+        #my_id {
+            background-color:white;
+        }
+        /* container 안에 있는 div */
+        #container div{
+            background-color: blueviolet;
+        }
+        .box1 {
+            text-align: center;
+        }
+
+        .underline {
+            /* 밑줄, 취소선 */
+            text-decoration: underline line-through;
+            /* 대문자 */
+            text-transform: uppercase;
+        }
+        .my_font {
+            /* font family에 있는 것들에서 영어일 때는 상관 없는데 한글은 구해야함 */
+            /* sans kr 구글에서 구한 것 */
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 40px;
+        }
+    </style>
+    <!-- 외부 선언 방식(link이용)-->
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <!-- inline방식(다른곳에서 건드릴 수 없다 따라서 효율적이지는 않다) -->
+    <div style="border: 1px; border-style: solid;">
+        <h1>hello world</h1>
+    </div>
+    <div>
+        <h1>hello world</h1>
+    </div>
+    <!--클래스는 중복되도 가능 
+        id는 중복되면 절대 안됨 -->
+    <div class="my_text" id="my_id">
+        <h1>아녕 세계</h1>
+    </div>
+
+    <div  id="my_id2">
+        <!-- 클래스 3개 사용할 때 띄어주면 된다. -->
+        <h1 class="my_text my_page is_logged_out">아녕 세계</h1>
+    </div>
+
+    <div id="container">
+        <header>
+            헤더
+        </header>
+        <div>
+            섹션1
+        </div>
+        <section>
+            섹션2
+        </section>
+        <footer>
+            푸터
+        </footer>
+    </div>
+    <div class="box1 underline">
+        <span>
+        <h1>Box1</h1>
+    </span>
+    </div>
+    <div>
+        <p class="my_font">hello world</p>
+    </div>
+</body>
+</html>

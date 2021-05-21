@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        #line {
+            width: 100%;
+            height: 500px;
+            border: 1px solid blue;
+        }
+
+        #image {
+            width: 200px;
+            height: 200px;
+        }
+
+        .btn {
+            align-items: center;
+            text-align: center;
+            border: 1px solid blue;
+            background-color: white;
+            margin: 5px 10px 5px 10px;
+        }
+    </style>
+    <script>
+        var degree = 0;
+
+        function start() {
+            $('#first').html('<img src="#" id="image"  alt="">')
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                if (e.target.result.match('image.*')) {
+                    document.getElementById("image").src = e.target.result;
+                } else {
+                    // 이미지가 아닐 때
+                    alert("이미지 선택해주세요");
+                    return;
+                }
+            }
+            reader.readAsDataURL(document.getElementById("file").files[0]);
+
+            $('#second').html('<div>' + '<input type="button" id="gray" class="btn" value="회색">'
+                + '<input type="button" class="btn" id="blur" value="흐리게">'
+                + '<input type="button" class="btn" id="shadow" value="그림자">'
+                + '<input type="button" class="btn" id="transparency" value="50%투명">'
+                + '</div>'
+                + '<div>'
+                + '<input type="button" class="btn" id="left" value="좌로90">'
+                + '<input type="button" class="btn" id="right" value="우로90">'
+                + '<input type="button" class="btn" id="reset" value="초기화">' + '</div>');
+
+            $('#gray').click(function () {
+                $('#image').css("-webkit-filter", "grayscale(100%)");
+            })
+            $('#blur').click(function () {
+                $('#image').css("filter", "blur(5px)");
+            })
+            $('#shadow').click(function () {
+                $('#image').css("box-shadow", "5px 5px 5px #000");
+            })
+            $('#transparency').click(function () {
+                $('#image').css("opacity", "0.5");
+            })
+            $('#left').click(function () {
+                degree -= 90;
+                $('#image').css("transform", "rotate(" + degree + "deg)");
+            })
+            $('#right').click(function () {
+                degree += 90;
+                $('#image').css("transform", "rotate(" + degree + "deg)");
+            })
+            $('#reset').click(function () {
+                $('#image').removeAttr("style");
+            })
+        };
+    </script>
+</head>
+
+<body>
+    <div id="line">
+        <center>
+            <div id="first"></div>
+            <input type="file" id="file" accept="image/*" onchange="start();">
+            <br><br>
+            <div id="second"></div>
+        </center>
+    </div>
+
+</body>
+
+
+</html>

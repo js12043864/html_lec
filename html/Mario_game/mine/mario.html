@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        #mario {
+            width: 100px;
+            height: 100px;
+            top: 410px;
+            left: 100px;
+            position: absolute;
+        }
+
+        #enemy {
+            width: 100px;
+            height: 100px;
+            top: 400px;
+            right: -100px;
+            position: absolute;
+        }
+
+        #scene {
+            width: 100%;
+            height: 500px;
+            z-index: -2;
+
+        }
+
+        #pt {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            font: bold;
+            font-size: 20px;
+        }
+
+        #line {
+            border: 1px solid black;
+            width: 100%;
+            height: 500px;
+        }
+
+        #start {
+            border: 1px solid black;
+            width: 100%;
+            height: 500px;
+            background-color: white;
+            z-index: 5;
+        }
+
+        #startimg {
+            width: 100px;
+            height: 100px;
+        }
+
+        #wp {
+            width: 40px;
+            height: 40px;
+            top: 410px;
+            left: 200px;
+            position: absolute;
+            z-index: 2;
+        }
+
+        #btn {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 10px 20px 10px 20px;
+            background-color: thistle;
+        }
+    </style>
+    <script>
+
+        //onload
+        $(function () {
+            let point = 0;
+            let isJumping = false;
+            let isattacking = false;
+            let ishit = false;
+            // $('#enemy').stop();
+
+            // before start
+            $('#line').hide();
+            $('#btn').click(function () {
+                $('#start').hide();
+                $('#line').show();
+                runGame();
+            })
+
+            function runGame() {
+                $('body').keydown(function (event) {
+                    if (event.code == 'Space') {
+                        jump();
+                    }
+                    if (event.code == 'Enter') {
+                        attack();
+                    }
+                })
+
+                setInterval(function () {
+                    setInterval(function () {
+                        dead();
+                        hit();
+                    }, 10);
+                    enemymove();
+                }, 1000);
+
+                //mario jump
+                function jump() {
+                    if (isJumping) {
+                        return;
+                    }
+                    isJumping = true;
+                    $('#mario').animate({
+                        top: '-=300px'
+                    }, 700);
+                    $('#mario').animate({
+                        top: '+=300px'
+                    }, 550, function () {
+                        isJumping = false;
+                    });
+                }
+
+                //enemy move
+                function enemymove() {
+                    let speed = (Math.random() * 2000) + 1500;
+                    $('#enemy').animate({
+                        right: '110%'
+                    }, speed, function () {
+                        $('#enemy').css('right', '-100px');
+                        point += 100;
+                        $('#point').html(point);
+                    });
+                }
+
+                //mario dead
+                function dead() {
+                    if (($('#enemy').position().left <= 160 && $('#enemy').position().left > 30)
+                        && ($('#enemy').position().top - $('#mario').position().top < 80 && $('#enemy').position().top - $('#mario').position().top >= -10)) {
+                        alert("Game Over" + ' 점수: ' + point + '');
+                        document.location.href = "mario.html";
+                    }
+                }
+
+                //mario attack
+                function attack() {
+                    if (isattacking) {
+                        return;
+                    }
+                    isattacking = true;
+                    $('#weapon').html('<img src="gumba.gif" id="wp" alt="">');
+                    $('#wp').animate({
+                        left: '100%'
+                    }, 600, function () {
+                        $('#weapon').html('');
+                        isattacking = false;
+                    })
+                }
+
+                //hit enemy
+                function hit() {
+                    if ($('#wp').position() === undefined) {
+                        return;
+                    }
+                    if (($('#enemy').position().left - $('#wp').position().left - 20 < 0) && ishit == false) {
+                        $('#enemy').stop(true);
+                        ishit = true;
+                        $('#enemy').css('right', '-100px');
+                        $('#weapon').html('');
+                        point += 200;
+                        $('#point').html(point);
+                    }
+                    ishit = false;
+                }
+            }
+            // end of game
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="start">
+        <center>
+            <br><br>
+            <h1>자바스크립트 마리오</h1>
+            <h1>개발자 : 박준성</h1>
+            <img src="mario.gif" id="startimg" alt="">
+            <br>
+            <input type="button" value="게임시작" id="btn">
+        </center>
+    </div>
+    <div id="line">
+        <img src="bg.jpg" id="scene" alt="">
+        <div id="pt"><span><b>점수 : </b></span> <span id='point'></span></div>
+        <img src="mario.gif" id="mario" alt="">
+        <img src="gumba.gif" id="enemy" alt="">
+        <div id="weapon"></div>
+    </div>
+
+</body>
+
+</html>
